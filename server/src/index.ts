@@ -22,13 +22,7 @@ app.use((req:Request, res:Response, next:Function) => {
     }
 })
 
-// Allow requests from specific origin(s)
-const corsOptions = {
-    origin: 'http://ec2-13-229-208-54.ap-southeast-1.compute.amazonaws.com',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 app.use("/", routes);
