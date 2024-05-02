@@ -1,0 +1,81 @@
+/* Table container */
+.table-container {
+    margin: 20px auto; /* Center the container horizontally */
+    padding-top: 40px; /* Adjust top padding */
+    position: relative;
+    max-width: 800px; /* Set maximum width */
+  }
+  
+  /* Table wrapper */
+  .table-wrapper {
+    width: 100%; /* Ensure the table fills the available width */
+  }
+
+  /* Table title */
+.table-title {
+    text-align: center; /* Center the text */
+    margin-bottom: 20px; /* Add some spacing below the title */
+  }  
+  
+  /* Create button */
+  .create-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 20px; /* Add padding */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer; /* Add cursor pointer */
+  }
+  
+  /* Table row */
+  .table-row {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Title column */
+  .title-column {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  /* Action column */
+  .action-column {
+    display: flex;
+    align-items: center; /* Align items vertically */
+  }
+  
+  /* Edit button */
+  .edit-button {
+    margin-right: 5px;
+    padding: 5px 10px; /* Add padding */
+    background-color: #28a745; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer; /* Add cursor pointer */
+  }
+  
+  /* Delete button */
+  .delete-button {
+    padding: 5px 10px; /* Add padding */
+    background-color: #dc3545; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer; /* Add cursor pointer */
+  }
+
+  .link {
+    color: inherit; /* Use the parent's text color */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  
+  .link:hover {
+    text-decoration: none; /* Remove underline on hover */
+  }
+  

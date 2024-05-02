@@ -50,13 +50,6 @@ body {
   background-color: #f8f9fa; /* Light gray background */
 }
 
-/* Container styles */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
 /* Card styles */
 .card {
   background-color: #fff;

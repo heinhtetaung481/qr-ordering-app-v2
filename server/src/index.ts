@@ -2,6 +2,7 @@ import express, {Request, Response} from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import routes from "./routes";
 
 dotenv.config();
 
@@ -24,9 +25,7 @@ app.use((req:Request, res:Response, next:Function) => {
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req:Request, res:Response) => {
-    res.send("Express + TypeScript Server test");
-})
+app.use("/", routes);
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);

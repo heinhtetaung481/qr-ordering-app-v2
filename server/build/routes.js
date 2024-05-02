@@ -23,13 +23,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// create model for table collection
-const mongoose_1 = __importStar(require("mongoose"));
-// Define table schema
-const TableSchema = new mongoose_1.Schema({
-    number: { type: String, required: true, unique: true },
-    table_reference: { type: String, required: true },
-    status: { type: String, required: true }
+const express_1 = require("express");
+const tableController = __importStar(require("./controllers/tableController"));
+const router = (0, express_1.Router)();
+// Home page
+router.get("/", (req, res) => {
+    res.send("Home Page");
 });
-// Export table model
-exports.default = mongoose_1.default.model('Table', TableSchema);
+// table routes
+router.get("/tables", tableController.getTables);
+router.post("/tables", tableController.addTable);
+router.get("/tables/:number", tableController.getTableById);
+router.delete("/tables/:number", tableController.deleteTable);
+router.put("/tables/:number", tableController.updateTable);
+exports.default = router;

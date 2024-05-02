@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Layout.css'
-import logo from '../fasteats.png'
+import logo from '../../fasteats.png'
 
 interface LayoutProps {
     children: React.ReactNode
@@ -12,7 +13,12 @@ const Layout = ({ children }: LayoutProps) => {
             <img src={logo} className="logo" alt="Fasteats" />
                 <nav>
                     <ul className="menu">
-                        <li><a href="/">Tables</a></li>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/tables">Tables</Link>
+                        </li>
                         <li><a href="/about">Menus</a></li>
                         <li><a href="/contact">Orders</a></li>
                     </ul>

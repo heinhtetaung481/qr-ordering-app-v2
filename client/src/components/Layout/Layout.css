@@ -22,6 +22,10 @@ header {
     padding-bottom: 10px;
 }
 
+.body {
+    padding: 20px;
+}
+
 .logo {
     height: 50px; /* Adjust as needed */
 }

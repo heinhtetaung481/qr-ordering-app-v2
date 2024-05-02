@@ -1,5 +1,5 @@
 // import React from 'react';
-import './App.css';
+import './Home.css';
 import React from 'react';
 import {
   Chart as ChartJS,
@@ -42,7 +42,7 @@ interface Props {
     menuItems: MenuItem[];
 }
 
-const App = () => {
+const Home = () => {
 
 const options = {
   responsive: true,
@@ -78,7 +78,7 @@ const data = {
 };
 
     return (
-        <div className="container">
+        <div>
             <div className="row">
                 <div className="col-md-8">
                 <div className="card">
@@ -111,4 +111,4 @@ const data = {
     );
 };
 
-export default App;
+export default Home;
