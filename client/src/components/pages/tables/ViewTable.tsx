@@ -54,7 +54,7 @@ const ViewTable: React.FC = () => {
       <div className="qr-code-section">
         <h3>QR Code</h3>
         <div className="qr-code">
-          <QRCode value={window.location.href} />
+          <QRCode value={`/cart?table=${tableData?.number}`} />
         </div>
       </div>
       <div className="orders-section">

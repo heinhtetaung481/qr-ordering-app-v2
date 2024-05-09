@@ -1,12 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import './Layout.css'
 import logo from '../../fasteats.png'
 
-interface LayoutProps {
-    children: React.ReactNode
-}
-const Layout = ({ children }: LayoutProps) => {
+const Layout = () => {
     return (
         <div className='container'>
             <header>
@@ -19,14 +16,21 @@ const Layout = ({ children }: LayoutProps) => {
                         <li>
                             <Link to="/tables">Tables</Link>
                         </li>
-                        <li><a href="/about">Menus</a></li>
-                        <li><a href="/contact">Orders</a></li>
+                        <li>
+                            <Link to="/menus">Menus</Link>
+                        </li>
+                        <li>
+                            <Link to="/categories">Categories</Link>
+                        </li>
+                        <li>
+                            <Link to="/orders">Orders</Link>
+                        </li>
                     </ul>
                 </nav>
             </header>
 
             <main className='body'>
-                {children}
+                <Outlet />
             </main>
             
             <footer>

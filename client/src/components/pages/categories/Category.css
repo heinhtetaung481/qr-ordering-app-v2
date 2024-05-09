@@ -1,0 +1,19 @@
+  .create-category-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .category-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+  
+  .category-item {
+    width: 200px;
+    border: 1px solid #ddd;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }

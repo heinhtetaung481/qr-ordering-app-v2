@@ -1,0 +1,89 @@
+.menu-container {
+  width: 100%;
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.category {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.menu-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  position: relative; /* Position relative for absolute positioning of quantity buttons */
+}
+
+.quantity {
+  position: absolute;
+  bottom: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  display: flex;
+  align-items: center;
+}
+
+.quantity button {
+  margin: 0 5px; /* Add some margin between buttons */
+  cursor: pointer;
+}
+
+.quantity span {
+  margin: 0 5px; /* Add some margin around the quantity */
+}
+
+.menu-item img {
+  width: 100px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.menu-details {
+  flex: 1;
+}
+
+.menu-details h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.menu-details p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.cart-icon {
+  position: fixed;
+  top: 20px;
+  right: 10%;
+  font-size: 24px;
+}
+
+@media (min-width: 768px) {
+  .menu-item {
+    width: calc(50% - 20px); /* Adjust margin */
+  }
+
+  .cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+  }
+}
