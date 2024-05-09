@@ -25,6 +25,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const tableController = __importStar(require("./controllers/tableController"));
+const menuController = __importStar(require("./controllers/menuController"));
+const categoryController = __importStar(require("./controllers/categoryController"));
+const orderController = __importStar(require("./controllers/orderController"));
 const router = (0, express_1.Router)();
 // Home page
 router.get("/", (req, res) => {
@@ -36,4 +39,15 @@ router.post("/tables", tableController.addTable);
 router.get("/tables/:number", tableController.getTableById);
 router.delete("/tables/:number", tableController.deleteTable);
 router.put("/tables/:number", tableController.updateTable);
+// menu routes
+router.get("/menus", menuController.getMenus);
+router.post("/menus", menuController.addMenu);
+router.delete("/menus/:id", menuController.deleteMenu);
+router.put("/menus/:id", menuController.updateMenu);
+router.post("/menus/cart-items", menuController.getCartItems);
+// category routes
+router.get("/categories", categoryController.getCategories);
+router.post("/categories", categoryController.addCategory);
+// order routes
+router.post("/order/checkout", orderController.checkout);
 exports.default = router;

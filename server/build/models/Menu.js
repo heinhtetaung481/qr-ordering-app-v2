@@ -24,8 +24,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-// Define category schema
-const CategorySchema = new mongoose_1.Schema({
-    name: { type: String, required: true }
+// Define menu schema
+const MenuSchema = new mongoose_1.Schema({
+    name: { type: String, required: true },
+    price: { type: Number, required: true },
+    image: { type: String, required: true },
+    category: { type: String, required: true },
+    description: { type: String, required: true }
 });
-exports.default = mongoose_1.default.model('Category', CategorySchema);
+exports.default = mongoose_1.default.model('Menu', MenuSchema);

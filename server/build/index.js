@@ -9,9 +9,24 @@ const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const routes_1 = __importDefault(require("./routes"));
+const multer_1 = __importDefault(require("multer"));
 dotenv_1.default.config();
+// Set up multer for file upload
+const storage = multer_1.default.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './public/uploads');
+    },
+    filename: (req, file, cb) => {
+        // update file name to exclude public folder
+        cb(null, `${Date.now()}-${file.originalname}`);
+    },
+});
+const upload = (0, multer_1.default)({ storage });
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3001;
+app.set('upload', upload);
+// Serve static files from the 'public' directory
+app.use(express_1.default.static("public"));
 // MongoDB connection
 const uri = (_a = process.env.MONGODB_URI) !== null && _a !== void 0 ? _a : "";
 mongoose_1.default.connect(uri);
