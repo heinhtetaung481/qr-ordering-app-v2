@@ -23,16 +23,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OrderItemSchema = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 // Define order item schema
-const OrderItemSchema = new mongoose_1.Schema({
+exports.OrderItemSchema = new mongoose_1.Schema({
     itemId: String,
     quantity: Number
 }, { _id: false });
 // Define order schema
 const OrderSchema = new mongoose_1.Schema({
     tableNumber: { type: String, required: true },
-    items: [OrderItemSchema],
+    items: [exports.OrderItemSchema],
     status: { type: String, required: true }
 });
 exports.default = mongoose_1.default.model('Order', OrderSchema);

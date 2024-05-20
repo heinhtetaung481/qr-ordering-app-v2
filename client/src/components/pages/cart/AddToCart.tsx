@@ -64,15 +64,6 @@ const AddToCart: React.FC = () => {
     return (
         <div className={styles["menu-container"]}>
             <h2 className={styles.title}>Menu</h2>
-            <div className={styles["cart-icon"]}>
-                <Link 
-                    to="/cart/view"
-                    state={quantities}
-                >
-                    <FontAwesomeIcon icon={faShoppingCart} />
-                    <span>{getTotalQuantities()}</span>
-                </Link>
-            </div>
             {Object.entries(itemsByCategory).map(([category, items]) => (
                 <div key={category}>
                     <h3 className={styles.category}>{category}</h3>
@@ -95,6 +86,15 @@ const AddToCart: React.FC = () => {
                     </div>
                 </div>
             ))}
+            <button className={styles["cart-icon"]}>
+                <Link 
+                    to="/cart/view"
+                    state={quantities}
+                >
+                    <FontAwesomeIcon icon={faShoppingCart} />
+                    <span>{getTotalQuantities()}</span>
+                </Link>
+            </button>
         </div>
     );
 }

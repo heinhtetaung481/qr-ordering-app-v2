@@ -1,57 +1,86 @@
-// create a component to show the selected items in the cart and allow the user to remove items from the cart. selected items will be passed from the AddToCart component as location state and it is item id and quantity
-import React, { useEffect } from 'react';
-import styles from './Order.module.css';
-import { MenuItem } from '../cart/AddToCart';
+// create a component to show the list of orders and group them by table number and show the active order first
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styles from './Order.module.css';
 
-const ViewCart: React.FC = () => {
-    // get card items from local storage
-    const selectedItems = JSON.parse(localStorage.getItem('cartItems') || '{}');
-    const [cartItems, setCartItems] = React.useState<{ [key: string]: number }>(selectedItems);
-    const [items, setItems] = React.useState<MenuItem[]>([]);
+export interface OrderItem {
+    itemId: string;
+    quantity: number;
+}
+export interface Order {
+    _id: string;
+    tableNumber: string;
+    items: Array<OrderItem>;
+    status: string;
+    name?: string;
+}
 
-    const fetchMenuItems = async (): Promise<void> => {
-        const apiUrl = `${process.env.REACT_APP_API_URL}/menus/cart-items`;
-        const data = { itemIds: Object.keys(cartItems) };
-        const response = await axios.post<MenuItem[]>(apiUrl, data);
-        console.log(response.data);
-        setItems(response.data);
+const fetchOrders = async (): Promise<Order[]> => {
+    const apiUrl = `${process.env.REACT_APP_API_URL}/orders`;
+    const response = await axios.get<Order[]>(apiUrl);
+    return response.data;
+}
+
+const Order: React.FC = () => {
+    const [orders, setOrders] = useState<Order[]>([]);
+
+    useEffect(() =>{
+        fetchOrders().then((data) => {
+            setOrders(data);
+        });
+    }, [])
+
+    const confirmOrder = async (orderId: string) => {
+        const apiUrl = `${process.env.REACT_APP_API_URL}/orders/${orderId}`;
+        await axios.put(apiUrl, { status: 'confirmed' });
+        // update the order status
+        setOrders(orders.map(order => {
+            if (order._id === orderId) {
+                return { ...order, status: 'confirmed' };
+            }
+            return order;
+        }));
+        alert('Order completed successfully');
+        fetchOrders();
     }
 
-    useEffect(() => {
-        fetchMenuItems();
-    }
-    , []);
+    // Group orders by table number
+    const ordersByTable = orders.reduce((acc, order) => {
+        (acc[order.tableNumber] = acc[order.tableNumber] || []).push(order);
+        return acc;
+    }, {} as Record<string, Order[]>);
 
     return (
-        <div className={styles["menu-container"]}>
-            <h2 className={styles.title}>Order</h2>
-            <div className={styles["cart-wrapper"]}>
-                {Object.entries(cartItems).map(([itemId, quantity]) => {
-                    const item = items.find(item => item._id === itemId);
-                    console.log(item);
-                    console.log(itemId);
-                    return item ? (
-                        <div key={item._id} className={styles["menu-item"]}>
-                            <img src={`${process.env.REACT_APP_API_URL}/${item.image}`} alt={item.name} className="menu-image"/>
-                            <div className={styles["menu-details"]}>
-                                <h3>{item.name}</h3>
-                                <p>{item.description}</p>
-                                <p>Price: ${item.price}</p>
-                            </div>
-                            <div className={styles["quantity"]}>
-                                x {quantity}
-                            </div>
-                        </div> ) : null;
-                })}
-            </div>
-            <hr/>
-            {/* add subtotal price */}
-            <div className={styles["subtotal"]}>
-                Subtotal : <span className='subtotal-price'>${items.reduce((acc, item) => acc + (item.price * (cartItems[item._id] || 0)), 0)}</span>
+        <div className={styles["order-container"]}>
+            <h2 className={styles.title}>Orders</h2>
+            <div className={styles["order-wrapper"]}>
+                {Object.entries(ordersByTable).map(([tableNumber, orders]) => (
+                    <div key={tableNumber}>
+                        <h3 className={styles.table}>Table : {tableNumber}</h3>
+                        <div className={styles["order-items"]}>
+                            {orders.map(order => (
+                                <div key={order._id} className={styles["order-item"]}>
+                                    <h4 className={styles["order-id"]}>Order ID: {
+                                        order._id.slice(-5)
+                                    }</h4>
+                                    <h4 className={styles["order-status"]}>Status: {order.status}</h4>
+                                    <ul>
+                                        {order.items.map(item => (
+                                            <li key={item.itemId}>{item.itemId} x {item.quantity}</li>
+                                        ))}
+                                    </ul>
+                                    <div className={styles["order-actions"]}>
+                                        {order.status === 'confirmed' ? null : <button className={styles["confirm-button"]} onClick={() => confirmOrder(order._id)}>Confirm</button>}
+                                        
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     )
 }
 
-export default ViewCart;
+export default Order;

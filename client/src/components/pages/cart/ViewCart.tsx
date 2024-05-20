@@ -62,7 +62,7 @@ const ViewCart: React.FC = () => {
         setCartItems({});
         // clear the items
         setItems([]);
-        window.location.href = '/order';
+        window.location.href = '/checkout';
     }
 
     return (

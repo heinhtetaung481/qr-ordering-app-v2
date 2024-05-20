@@ -51,12 +51,18 @@
     background-color: rgb(96, 157, 5);
     padding: 3px;
     border-radius: 5%;
+    line-height: 30px;
+    height: 40px;
+    overflow: hidden;
   }
 
   .status-checked {
     background-color: grey;
     padding: 3px;
     border-radius: 5%;
+    line-height: 30px;
+    height: 40px;
+    overflow: hidden;
   }
   
   /* Add more styling as needed */
@@ -64,3 +70,17 @@
     text-align: center;
     margin-bottom: 20px;
   }
+
+  .order-item ul {
+    /* list-style-type: none; */
+    padding: 0;
+    margin: 0;
+    margin-left: auto;
+}
+
+.order-item ul li {
+    margin-bottom: 5px;
+    font-size: 1em;
+    width: 200px; /* adjust this value as needed */
+    text-align: left;
+}

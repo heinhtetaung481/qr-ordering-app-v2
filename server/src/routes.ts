@@ -31,5 +31,7 @@ router.post("/categories", categoryController.addCategory);
 
 // order routes
 router.post("/order/checkout", orderController.checkout);
+router.get("/orders", orderController.getOrders);
+router.put("/orders/:id", orderController.updateOrder);
 
 export default router;

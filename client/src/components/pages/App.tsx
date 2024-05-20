@@ -12,6 +12,7 @@ import AddCategory from "./categories/AddCategory"
 import AddToCart from "./cart/AddToCart"
 import GuestLayout from "../Layout/GuestLayout"
 import ViewCart from "./cart/ViewCart"
+import Checkout from "./cart/Checkout"
 import Order from "./orders/Order"
 
 const App = () => {
@@ -31,13 +32,14 @@ const App = () => {
         {/* Category Routes */}
         <Route path="/categories" element={<Categories />} />
         <Route path="/category/create" element={<AddCategory />} />
+        <Route path="/orders" element={<Order />} />
       </Route>
       {/* Add to cart routes */}
       <Route path="/cart" element={<GuestLayout />}>
         <Route index element={<AddToCart />} />
         <Route path="/cart/view"  element={<ViewCart />} />
       </Route>
-      <Route path="/order" element={<Order />} />
+      <Route path="/checkout" element={<Checkout />} />
     </Routes>
   )
 }

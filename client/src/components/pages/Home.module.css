@@ -142,6 +142,42 @@ body {
   padding-left: 15px;
 }
 
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-item h4, .order-item p {
+  margin: 0;
+}
+
+.menu-button, .category-button {
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.category-button {
+  margin: 0;
+  margin-left: auto;
+}
+
+button a {
+  color: white;
+  text-decoration: none;
+}
+
 @media (min-width: 768px) {
   .col-md-8 {
       flex: 0 0 60%;
