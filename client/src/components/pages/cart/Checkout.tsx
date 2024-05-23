@@ -29,8 +29,6 @@ const ViewCart: React.FC = () => {
             <div className={styles["cart-wrapper"]}>
                 {Object.entries(cartItems).map(([itemId, quantity]) => {
                     const item = items.find(item => item._id === itemId);
-                    console.log(item);
-                    console.log(itemId);
                     return item ? (
                         <div key={item._id} className={styles["menu-item"]}>
                             <img src={`${process.env.REACT_APP_API_URL}/${item.image}`} alt={item.name} className="menu-image"/>
