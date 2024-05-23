@@ -86,7 +86,7 @@ const AddToCart: React.FC = () => {
                     </div>
                 </div>
             ))}
-            <button className={styles["cart-icon"]}>
+            <div className={styles["cart-icon"]}>
                 <Link 
                     to="/cart/view"
                     state={quantities}
@@ -94,7 +94,7 @@ const AddToCart: React.FC = () => {
                     <FontAwesomeIcon icon={faShoppingCart} />
                     <span>{getTotalQuantities()}</span>
                 </Link>
-            </button>
+            </div>
         </div>
     );
 }

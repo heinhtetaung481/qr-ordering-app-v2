@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './Category.css';
+import styles from './Category.module.css';
 
 export interface Category {
     _id: number;
@@ -25,14 +25,14 @@ const Category: React.FC = () => {
     }, [])
 
     return (
-        <div className="category-container">
-            <h2 className='title'>Categories</h2>
-            <div className='buttons-container'>
-                <Link to="/category/create" className="create-category-button">Create Category</Link>
+        <div className={styles["category-container"]}>
+            <h2 className={styles.title}>Categories</h2>
+            <div className={styles['buttons-container']}>
+                <Link to="/category/create" className={styles["create-category-button"]}>Create Category</Link>
             </div>
-            <div className="category-wrapper">
+            <div className={styles["category-wrapper"]}>
                 {categories.map(category => (
-                    <div key={category._id} className="category-item">
+                            <div key={category._id} className={styles["category-item"]}>
                         <h3>{category.name}</h3>
                     </div>
                 ))}
