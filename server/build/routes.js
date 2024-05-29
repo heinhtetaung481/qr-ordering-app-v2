@@ -28,6 +28,7 @@ const tableController = __importStar(require("./controllers/tableController"));
 const menuController = __importStar(require("./controllers/menuController"));
 const categoryController = __importStar(require("./controllers/categoryController"));
 const orderController = __importStar(require("./controllers/orderController"));
+const authController = __importStar(require("./controllers/authController"));
 const router = (0, express_1.Router)();
 // Home page
 router.get("/", (req, res) => {
@@ -52,4 +53,6 @@ router.post("/categories", categoryController.addCategory);
 router.post("/order/checkout", orderController.checkout);
 router.get("/orders", orderController.getOrders);
 router.put("/orders/:id", orderController.updateOrder);
+// Auth routes
+router.post("/login", authController.login);
 exports.default = router;
