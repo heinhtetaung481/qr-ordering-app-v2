@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.600caa40.css",
-    "main.js": "/static/js/main.f291cbcd.js",
+    "main.js": "/static/js/main.ce314f20.js",
     "static/js/453.419a5d54.chunk.js": "/static/js/453.419a5d54.chunk.js",
     "static/media/fasteats.png": "/static/media/fasteats.f32ccd865b84a525df2a.png",
     "index.html": "/index.html",
     "main.600caa40.css.map": "/static/css/main.600caa40.css.map",
-    "main.f291cbcd.js.map": "/static/js/main.f291cbcd.js.map",
+    "main.ce314f20.js.map": "/static/js/main.ce314f20.js.map",
     "453.419a5d54.chunk.js.map": "/static/js/453.419a5d54.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.600caa40.css",
-    "static/js/main.f291cbcd.js"
+    "static/js/main.ce314f20.js"
   ]
 }
