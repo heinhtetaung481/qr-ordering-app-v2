@@ -14,33 +14,44 @@ import GuestLayout from "../Layout/GuestLayout"
 import ViewCart from "./cart/ViewCart"
 import Checkout from "./cart/Checkout"
 import Order from "./orders/Order"
+import Login from "./login/Login"
+import { AuthProvider } from "../utils/AuthContext";
+import ProtectedRoute from "../utils/ProtectedRoute"; 
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        {/* Table Routes */}
-        <Route path="/tables" element={<Tables />} />
-        <Route path="/tables/create" element={<AddTable />} />
-        <Route path="/tables/:id" element={<ViewTable />} />
-        <Route path="/tables/edit/:id" element={<AddTable />} />
-        {/* Menu Routes */}
-        <Route path="/menus" element={<Menu />} />
-        <Route path="/menus/create" element={<AddMenu />} />
-        <Route path="/menus/edit/:id" element={<AddMenu />} />
-        {/* Category Routes */}
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/category/create" element={<AddCategory />} />
-        <Route path="/orders" element={<Order />} />
-      </Route>
-      {/* Add to cart routes */}
-      <Route path="/cart" element={<GuestLayout />}>
-        <Route index element={<AddToCart />} />
-        <Route path="/cart/view"  element={<ViewCart />} />
-      </Route>
-      <Route path="/checkout" element={<Checkout />} />
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          
+          <Route index element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          } />
+          {/* Table Routes */}
+          <Route path="/tables" element={<Tables />} />
+          <Route path="/tables/create" element={<AddTable />} />
+          <Route path="/tables/:id" element={<ViewTable />} />
+          <Route path="/tables/edit/:id" element={<AddTable />} />
+          {/* Menu Routes */}
+          <Route path="/menus" element={<Menu />} />
+          <Route path="/menus/create" element={<AddMenu />} />
+          <Route path="/menus/edit/:id" element={<AddMenu />} />
+          {/* Category Routes */}
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/category/create" element={<AddCategory />} />
+          <Route path="/orders" element={<Order />} />
+        </Route>
+        {/* Add to cart routes */}
+        <Route path="/cart" element={<GuestLayout />}>
+          <Route index element={<AddToCart />} />
+          <Route path="/cart/view"  element={<ViewCart />} />
+        </Route>
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </AuthProvider>
   )
 }
 

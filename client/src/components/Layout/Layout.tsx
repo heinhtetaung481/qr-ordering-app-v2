@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import './Layout.css'
 import logo from '../../fasteats.png'
+import { AuthContext } from '../utils/AuthContext'
 
 const Layout = () => {
+    const { logout } = useContext(AuthContext);
     return (
         <div className='container'>
             <header>
@@ -24,6 +26,9 @@ const Layout = () => {
                         </li>
                         <li>
                             <Link to="/orders">Orders</Link>
+                        </li>
+                        <li>
+                            <button onClick={logout}>Logout</button>
                         </li>
                     </ul>
                 </nav>

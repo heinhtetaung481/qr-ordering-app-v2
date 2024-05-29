@@ -41,7 +41,7 @@ nav ul li {
     margin-left: 20px;
 }
 
-nav ul li a {
+nav ul li a, nav ul li button{
     text-decoration: none;
     color: #333;
     font-size: 16px;
@@ -50,7 +50,13 @@ nav ul li a {
     border-radius: 5px;
 }
 
-nav ul li a:hover {
+nav ul li button {
+    background-color: #ffdd00; /* Elegant yellow for restaurant website */
+    border: none;
+    cursor: pointer;
+}
+
+nav ul li a:hover, nav ul li button:hover {
     background-color: #ffc800; /* Lighter shade on hover */
     color: #333;
 }

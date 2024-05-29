@@ -3,6 +3,7 @@ import * as tableController from './controllers/tableController';
 import * as menuController from './controllers/menuController';
 import * as categoryController from './controllers/categoryController';
 import * as orderController from './controllers/orderController';
+import * as authController from './controllers/authController';
 
 const router = Router();
 
@@ -33,5 +34,8 @@ router.post("/categories", categoryController.addCategory);
 router.post("/order/checkout", orderController.checkout);
 router.get("/orders", orderController.getOrders);
 router.put("/orders/:id", orderController.updateOrder);
+
+// Auth routes
+router.post("/login", authController.login);
 
 export default router;
