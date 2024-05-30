@@ -22,13 +22,12 @@ const App = () => {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={
+          <ProtectedRoute>
+            <Layout />
+          </ProtectedRoute>}>
           
-          <Route index element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          } />
+          <Route index element={<Home />} />
           {/* Table Routes */}
           <Route path="/tables" element={<Tables />} />
           <Route path="/tables/create" element={<AddTable />} />
